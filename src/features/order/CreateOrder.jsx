@@ -35,9 +35,16 @@ function CreateOrder() {
     setWithPriority(!withPriority);
   };
   return (
-    <div className="px-4 py-6">
-      <LinkButton to="/cart">&larr; Back</LinkButton>
-      <h2 className="mt-4 mb-8 text-xl font-semibold">Ready to order? Let's go!</h2>
+    <div className="px-4 py-3">
+      <div className="flex items-center">
+        <LinkButton to="/cart">
+          <span>&larr; </span>
+          <span>Back to Cart</span>
+        </LinkButton>
+      </div>
+      <h2 className="mt-4 mb-8 text-xl font-semibold">
+        Ready to order? Let's go!
+      </h2>
 
       {/* <Form method="POST" action="/order/new"> */}
       <Form method="POST">

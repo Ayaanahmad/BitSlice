@@ -6,30 +6,6 @@ import EmptyCart from "./EmptyCart";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart } from "./cartSlice";
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: "Mediterranean",
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: "Vegetale",
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: "Spinach and Mushroom",
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
-
 function Cart() {
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.user.userName);
@@ -39,9 +15,14 @@ function Cart() {
 
   return (
     <div className="px-4 py-3">
-      <LinkButton to="/menu">&larr; Back to menu</LinkButton>
+      <div className="flex items-center">
+        <LinkButton to="/menu">
+          <span>&larr; </span>
+          <span>Back to Menu</span>
+        </LinkButton>
+      </div>
 
-      <h2 className="mt-7 text-xl font-semibold">Your cart, {userName}</h2>
+      <h2 className="mt-4 text-xl font-semibold">Your cart, {userName}</h2>
 
       <ul className="mt-3 divide-y divide-stone-300 border-b border-stone-400">
         {cart.map((item) => (

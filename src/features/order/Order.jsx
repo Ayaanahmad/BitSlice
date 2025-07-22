@@ -82,15 +82,19 @@ function Order() {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
-      <LinkButton to="/menu">&larr; Back to menu</LinkButton>
+      <div className="flex justify-center">
+        <LinkButton to="/menu">
+          <span>Back to Menu</span>
+        </LinkButton>
+      </div>
       {showModal && (
-        <div className="bg-opacity-30 fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/30">
+        <div className="bg-opacity-30 fixed inset-0 z-50 flex items-center justify-center bg-white/30 backdrop-blur-sm">
           <div className="w-11/12 max-w-md rounded-lg border border-yellow-400 bg-white p-6 text-center shadow-lg">
             <h2 className="mb-2 text-xl font-semibold">🎉 Order Placed!</h2>
             <p className="mb-1 text-sm">Please note your Order ID:</p>
             <p className="mb-4 font-mono text-lg font-bold">{order.id}</p>
             <button
-              className="rounded-full bg-yellow-400 px-4 py-2 font-semibold text-stone-800 transition hover:bg-yellow-300 cursor-pointer"
+              className="cursor-pointer rounded-full bg-yellow-400 px-4 py-2 font-semibold text-stone-800 transition hover:bg-yellow-300"
               onClick={() => setShowModal(false)}
             >
               Got it!
