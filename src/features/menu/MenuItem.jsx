@@ -5,12 +5,16 @@ import Button from "../../ui/Button";
 import DeleteItem from "../cart/DeleteItem";
 import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 import LinkButton from "../../ui/LinkButton";
+import { useNavigation } from "react-router-dom";
+import PageLoader from "../../ui/PageLoader";
 
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   const dispatch = useDispatch();
   const currentQuantity = useSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
 
   function handleAddToCart() {
     const newItem = {
@@ -26,7 +30,7 @@ function MenuItem({ pizza }) {
   return (
     <li className="flex gap-4 py-2">
       <img
-        src={imageUrl}
+        src={isLoading ? <PageLoader /> : imageUrl}
         alt={name}
         className={`h-24 ${soldOut ? `opacity-70 grayscale` : ""}`}
       />

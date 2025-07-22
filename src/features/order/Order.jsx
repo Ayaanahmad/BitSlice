@@ -10,6 +10,7 @@ import {
 import OrderItem from "./OrderItem";
 import LinkButton from "../../ui/LinkButton";
 import { useEffect, useState } from "react";
+import { FaRegCopy } from "react-icons/fa";
 
 function Order() {
   const order = useLoaderData();
@@ -26,6 +27,17 @@ function Order() {
   } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
   const [showModal, setShowModal] = useState(false);
+  const [copied, setCopied] = useState(true);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(order.id);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  };
 
   useEffect(() => {
     const newOrderFlag = localStorage.getItem("newOrderPlaced");
@@ -92,7 +104,16 @@ function Order() {
           <div className="w-11/12 max-w-md rounded-lg border border-yellow-400 bg-white p-6 text-center shadow-lg">
             <h2 className="mb-2 text-xl font-semibold">🎉 Order Placed!</h2>
             <p className="mb-1 text-sm">Please note your Order ID:</p>
-            <p className="mb-4 font-mono text-lg font-bold">{order.id}</p>
+            <div className="mb-4 mt-2 gap-2 flex items-center justify-center cursor-pointer" onClick={handleCopy}>
+              <p className="font-mono text-lg font-bold">{order.id}</p>
+              <button
+                className="text-yellow-500 transition hover:text-yellow-600 cursor-pointer"
+                title="Copy order id"
+              >
+                <FaRegCopy />
+              </button>
+            </div>
+            {copied &&<p className="mb-4 text-yellow-600">Order ID copied!</p>}
             <button
               className="cursor-pointer rounded-full bg-yellow-400 px-4 py-2 font-semibold text-stone-800 transition hover:bg-yellow-300"
               onClick={() => setShowModal(false)}
