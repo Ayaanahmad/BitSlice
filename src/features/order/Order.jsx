@@ -27,7 +27,7 @@ function Order() {
   } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
   const [showModal, setShowModal] = useState(false);
-  const [copied, setCopied] = useState(true);
+  const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     try {
