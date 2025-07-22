@@ -8,7 +8,7 @@ function Menu() {
   console.log(menu);
   return (
     <div>
-      <div className="flex items-center px-4 py-3">
+      <div className=" px-4 py-3">
         <LinkButton to="/">
           <span>&larr; </span>
           <span>Back to Home</span>
