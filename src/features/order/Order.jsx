@@ -36,6 +36,7 @@ function Order() {
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy!", err);
+      setCopied(false)
     }
   };
 
@@ -113,7 +114,7 @@ function Order() {
                 <FaRegCopy />
               </button>
             </div>
-            {copied &&<p className="mb-4 text-yellow-600">Order ID copied!</p>}
+            {copied ? <p className="mb-4 text-yellow-600">Order ID copied!</p> : null}
             <button
               className="cursor-pointer rounded-full bg-yellow-400 px-4 py-2 font-semibold text-stone-800 transition hover:bg-yellow-300"
               onClick={() => setShowModal(false)}
