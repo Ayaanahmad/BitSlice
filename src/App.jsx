@@ -10,6 +10,7 @@ import Error from "./ui/Error";
 
 const router = createBrowserRouter([
   {
+    path:"/",
     element: <AppLayout />,
     errorElement: <Error/>,
     children: [
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         errorElement: <Error/>,
         loader: orderLoader
       },
+      {
+        path: "*",
+        element: <Error/>
+      }
     ],
   },
 ]);
