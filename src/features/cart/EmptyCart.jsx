@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import LinkButton from "../../ui/LinkButton";
+import { HiArrowLeft } from "react-icons/hi2";
 
 function EmptyCart() {
   return (
     <div className="px-4 py-3 lg:ml-35">
       <div className="flex items-center">
         <LinkButton to="/menu">
-          <span>&larr; </span>
+          <HiArrowLeft/>
           <span>Back to Menu</span>
         </LinkButton>
       </div>

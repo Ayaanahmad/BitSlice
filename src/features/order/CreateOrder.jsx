@@ -8,6 +8,7 @@ import EmptyCart from "../cart/EmptyCart";
 import store from "../../store";
 import { formatCurrency } from "../../utils/helpers";
 import LinkButton from "../../ui/LinkButton";
+import { HiArrowLeft } from "react-icons/hi2";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -38,7 +39,7 @@ function CreateOrder() {
     <div className="px-4 py-3">
       <div className="flex items-center">
         <LinkButton to="/cart">
-          <span>&larr; </span>
+          <HiArrowLeft/>
           <span>Back to Cart</span>
         </LinkButton>
       </div>

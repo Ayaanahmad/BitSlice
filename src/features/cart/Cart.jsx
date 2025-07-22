@@ -5,6 +5,7 @@ import CartItem from "./CartItem";
 import EmptyCart from "./EmptyCart";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart } from "./cartSlice";
+import { HiArrowLeft } from "react-icons/hi2";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function Cart() {
     <div className="px-4 py-3">
       <div className="flex items-center">
         <LinkButton to="/menu">
-          <span>&larr; </span>
+          <HiArrowLeft/>
           <span>Back to Menu</span>
         </LinkButton>
       </div>
